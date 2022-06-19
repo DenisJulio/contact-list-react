@@ -1,8 +1,9 @@
-import { useReducer, useState } from "react";
+import { useState } from "react";
 import { ListContent } from "../../utils/types";
 import ListItem from "./ListItem";
 import styles from "./ListUi.module.sass";
 import classNames from "classnames/bind";
+import InputListContent from "./InputListContent";
 
 let cn = classNames.bind(styles);
 
@@ -11,23 +12,13 @@ export default function ListContainer({
   updateParentState,
 }: {
   data: ListContent[];
-  updateParentState?: (newDataArray: ListContent[]) => void;
+  updateParentState: (newDataArray: ListContent[]) => void;
 }) {
-  // -------------------------
-  /* 
-    TODO: 
-    create your own stateful hook
-    that subscribes to a state that will renders the delete button if there are itens for deletion
-  */
-
-  // -------------------------
-
-  // ---------[state hook solution]--------------
   const [selectedItemsIndexes, setSelectedItemsIndexes] = useState<number[]>(
     []
   );
 
-  const onClickItems = (checked: boolean, item: ListContent, index: number) => {
+  const onClickItems = (checked: boolean, _item: unknown, index: number) => {
     let newArr;
     if (checked) {
       newArr = selectedItemsIndexes.concat(index);
@@ -40,14 +31,20 @@ export default function ListContainer({
     setSelectedItemsIndexes(newArr);
   };
 
+  const addNewListItem = (content: string) => {
+    let id;
+    if (data.length !== 0) id = data[data.length - 1].id + 1;
+    else id = 1;
+    const newArr = data.concat({ id: id, content: content });
+    updateParentState(newArr);
+  };
+
   const deletListItems = () => {
     if (updateParentState) {
       updateParentState(strip(data, selectedItemsIndexes));
       setSelectedItemsIndexes([]);
     }
   };
-
-  // --------------------------------------------
 
   return (
     <div className={styles.listContainer}>
@@ -57,22 +54,23 @@ export default function ListContainer({
             key={item.id}
             data={item}
             index={index}
-            // onListItemChecked={updateBackingArray}
             onListItemChecked={onClickItems}
           />
         ))}
       </div>
       <div className={styles.listActionContainer}>
-        {selectedItemsIndexes.length > 0 ? ( // TODO: this needs to reference a state for rerendering
+        {selectedItemsIndexes.length > 0 ? (
           <DeleteButton onClick={deletListItems} />
-        ) : null}
+        ) : (
+          <InputListContent onNewListItemAdded={addNewListItem} />
+        )}
       </div>
     </div>
   );
 }
 
 const DeleteButton = ({ onClick }: { onClick?: () => void }) => (
-  <button onClick={onClick} className={cn("button")}>
+  <button onClick={onClick} className={cn("button")} style={{ width: "60%" }}>
     Delete
   </button>
 );
@@ -86,7 +84,7 @@ const DeleteButton = ({ onClick }: { onClick?: () => void }) => (
  * @returns {Array} a new array stripped from the elemenst in the indexes provided by the indexes array
  */
 function strip<T>(array: T[], indexes: number[]): Array<any> {
-  indexes.sort();
+  indexes.sort((el1, el2) => el1 - el2);
   let stripedArr = array.slice(0, indexes[0]);
   for (let c1 = 0; c1 < indexes.length; c1++) {
     let c2 = c1 + 1;

@@ -16,7 +16,7 @@ export default function ListItem({
   ) => void;
   index: number;
 }) {
-  const cn = classNames.bind(styles);
+  const classes = classNames.bind(styles);
   const [hovered, setHovered] = useState(false);
   const [checked, setChecked] = useState(false);
   const checkboxRef = useRef<HTMLInputElement>(null);
@@ -40,12 +40,12 @@ export default function ListItem({
 
   return (
     <div
-      className={cn("listItem", {
+      className={classes("listItem", {
         highlight: checked,
         ["listItem-hovered"]: hovered && !checked,
       })}
-      onMouseOver={() => setHovered(!hovered)}
-      onMouseOut={() => setHovered(!hovered)}
+      onMouseEnter={() => setHovered(!hovered)}
+      onMouseLeave={() => setHovered(!hovered)}
       onClick={clickHandler}
     >
       <input ref={checkboxRef} type="checkbox" />

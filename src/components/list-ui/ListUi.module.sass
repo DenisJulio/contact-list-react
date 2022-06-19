@@ -32,10 +32,16 @@ $innerListContainerBorder: #a3a1a1
   flex-flow: column nowrap
 
 .button
-  margin-top: 1rem
+  font-weight: bold
+  text-transform: uppercase
   border-radius: 4px
-  padding: .4rem
-  width: 60%
+  background-color: #185ebb
+  color: white
+  padding: .6rem .4rem
+
+.inputList-input
+  line-height: 1.9rem
+  margin-right: .2rem
 
 .innerListContainer
   border: 1px solid transparent
@@ -45,7 +51,10 @@ $innerListContainerBorder: #a3a1a1
   height: 90%
 
 .listActionContainer
-  // border: 1px solid red
+  display: flex
+  flex-flow: column nowrap
+  align-items: center
+  justify-content: center
   height: 10%
 
 .listItem + .listItem
