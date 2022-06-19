@@ -1,0 +1,65 @@
+<mxfile host="65bd71144e">
+    <diagram id="rSxoALjN4No_AQTxvwPx" name="Page-1">
+        <mxGraphModel dx="1032" dy="516" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="3" value="call back" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;entryX=1;entryY=0.088;entryDx=0;entryDy=0;entryPerimeter=0;sketch=1;fontFamily=Lucida Console;" edge="1" parent="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="721.5" y="417.0799999999999" as="sourcePoint"/>
+                        <mxPoint x="564" y="417.0799999999999" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="list Container" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;sketch=1;fontFamily=Lucida Console;" vertex="1" parent="1">
+                    <mxGeometry x="509" y="320" width="100" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;sketch=1;fontFamily=Lucida Console;" vertex="1" parent="4">
+                    <mxGeometry x="45" y="93" width="10" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="list Item" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;sketch=1;fontFamily=Lucida Console;" vertex="1" parent="1">
+                    <mxGeometry x="672" y="320" width="100" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;sketch=1;fontFamily=Lucida Console;" vertex="1" parent="6">
+                    <mxGeometry x="45" y="73" width="10" height="38" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="shape=umlLifeline;participant=umlActor;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;verticalAlign=top;spacingTop=36;outlineConnect=0;sketch=1;fontFamily=Lucida Console;" vertex="1" parent="1">
+                    <mxGeometry x="853" y="320" width="20" height="300" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="clicks the item" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;entryX=0.9;entryY=0.238;entryDx=0;entryDy=0;entryPerimeter=0;sketch=1;fontFamily=Lucida Console;" edge="1" parent="1">
+                    <mxGeometry width="80" relative="1" as="geometry">
+                        <mxPoint x="862.5" y="403.03999999999996" as="sourcePoint"/>
+                        <mxPoint x="726" y="403.03999999999996" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.1;entryY=0.257;entryDx=0;entryDy=0;entryPerimeter=0;sketch=1;endArrow=none;endFill=0;dashed=1;fontFamily=Lucida Console;" edge="1" parent="1" source="11" target="5">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="752" y="272"/>
+                            <mxPoint x="752" y="294"/>
+                            <mxPoint x="459" y="294"/>
+                            <mxPoint x="459" y="422"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="updates the &lt;font color=&quot;#33ff33&quot;&gt;&lt;b&gt;new list &lt;/b&gt;&lt;/font&gt;to be rendered without the items select" style="shape=note2;boundedLbl=1;whiteSpace=wrap;html=1;size=25;verticalAlign=top;align=center;sketch=1;fontFamily=Lucida Console;" vertex="1" parent="1">
+                    <mxGeometry x="680" y="172" width="140" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="List Container" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;labelBorderColor=none;sketch=1;fontFamily=Lucida Console;fontSize=12;fontColor=default;strokeColor=default;fillColor=default;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="477.48" y="118" width="163.03" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="&lt;font&gt;props {&lt;br&gt;&amp;nbsp; data: list[]&lt;br&gt;&amp;nbsp; cbFn: (data):void&lt;br&gt;}&lt;br&gt;&lt;/font&gt;" style="text;strokeColor=none;fillColor=default;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBorderColor=none;sketch=1;fontFamily=Lucida Console;fontSize=12;fontColor=default;html=1;whiteSpace=wrap;" vertex="1" parent="12">
+                    <mxGeometry y="26" width="163.03" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="line;strokeWidth=1;fillColor=default;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;labelBorderColor=none;sketch=1;fontFamily=Lucida Console;fontSize=12;fontColor=default;html=1;" vertex="1" parent="12">
+                    <mxGeometry y="96" width="163.03" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="+ method(type): type" style="text;strokeColor=none;fillColor=default;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBorderColor=none;sketch=1;fontFamily=Lucida Console;fontSize=12;fontColor=default;html=1;" vertex="1" parent="12">
+                    <mxGeometry y="104" width="163.03" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="List Ui" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;labelBorderColor=none;sketch=1;fontFamily=Lucida Console;fontSize=12;fontColor=default;strokeColor=default;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="301" y="320" width="100" height="300" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

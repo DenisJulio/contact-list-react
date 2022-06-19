@@ -1,0 +1,52 @@
+
+// $listContainerBorder: grey
+$listContainerBorder: transparent
+$innerListContainerBorder: #a3a1a1
+
+.listItem
+  border: 1px solid transparent
+  background-color: white
+  box-shadow: 0 1px 3px 2px grey
+  padding: .4rem .5rem
+  transition: visibility 1s ease-out
+
+  &:hover
+    box-shadow: -.5px 1px 10px 2px #559cdf
+
+  input
+    margin-right: .8rem
+
+.highlight
+  box-shadow: -.5px 1px 10px 2px #559cdf
+
+.listItem-hovered
+  transform: scale(1.015, 1)
+
+.listContainer
+  border: 1px solid $listContainerBorder
+  background-color: white
+  width: 30vw
+  height: 90vh
+  padding: 1.5rem 1rem
+  display: flex
+  flex-flow: column nowrap
+
+.button
+  margin-top: 1rem
+  border-radius: 4px
+  padding: .4rem
+  width: 60%
+
+.innerListContainer
+  border: 1px solid transparent
+  background-color: #d1d1d1cc
+  border-radius: 4px
+  padding: .5rem .5rem
+  height: 90%
+
+.listActionContainer
+  // border: 1px solid red
+  height: 10%
+
+.listItem + .listItem
+  margin-top: .2rem
