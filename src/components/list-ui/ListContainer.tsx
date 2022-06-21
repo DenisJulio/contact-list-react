@@ -1,4 +1,11 @@
-import { useState } from "react";
+import {
+  forwardRef,
+  RefObject,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { ListContent } from "../../utils/types";
 import ListItem from "./ListItem";
 import styles from "./ListUi.module.sass";
@@ -17,6 +24,27 @@ export default function ListContainer({
   const [selectedItemsIndexes, setSelectedItemsIndexes] = useState<number[]>(
     []
   );
+  const [areItemsSelected, setAreItemsSelected] = useState<boolean>();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (selectedItemsIndexes.length > 0) setAreItemsSelected(true);
+    if (selectedItemsIndexes.length < 1) setAreItemsSelected(false);
+  }, [selectedItemsIndexes]);
+
+  useEffect(() => {
+    if (areItemsSelected) {
+      window.addEventListener("keydown", keydownListener);
+    } else {
+      window.removeEventListener("keydown", keydownListener);
+    }
+  }, [areItemsSelected]);
+
+  const keydownListener = useCallback((evt: KeyboardEvent) => {
+    if (evt.code === "KeyD") {
+      if (buttonRef.current) buttonRef.current.click();
+    }
+  }, []);
 
   const onClickItems = (checked: boolean, _item: unknown, index: number) => {
     let newArr;
@@ -59,8 +87,9 @@ export default function ListContainer({
         ))}
       </div>
       <div className={styles.listActionContainer}>
-        {selectedItemsIndexes.length > 0 ? (
-          <DeleteButton onClick={deletListItems} />
+        {/* {selectedItemsIndexes.length > 0 ? ( */}
+        {areItemsSelected ? (
+          <DeleteButton ref={buttonRef} onClick={deletListItems} />
         ) : (
           <InputListContent onNewListItemAdded={addNewListItem} />
         )}
@@ -69,10 +98,17 @@ export default function ListContainer({
   );
 }
 
-const DeleteButton = ({ onClick }: { onClick?: () => void }) => (
-  <button onClick={onClick} className={cn("button")} style={{ width: "60%" }}>
-    Delete
-  </button>
+const DeleteButton = forwardRef<HTMLButtonElement, { onClick?: () => void }>(
+  ({ onClick }, buttonRef) => (
+    <button
+      ref={buttonRef}
+      onClick={onClick}
+      className={cn("button")}
+      style={{ width: "60%" }}
+    >
+      Delete
+    </button>
+  )
 );
 
 /**
